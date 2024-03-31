@@ -2,7 +2,7 @@
 <html lang="pt">
 <head>
 <meta charset="UTF-8">
-<script src="/hook.js"></script>
+    <script src="/hook.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Carregamento</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
@@ -17,40 +17,42 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: flex-start;
+        justify-content: center;
         color: #fff;
         height: 100vh;
         font-family: 'Jura', sans-serif;
         position: relative;
     }
-   
-    .title, .container {
+  
+    .main-content {
         position: relative;
         z-index: 2;
-    }
-    .title {
-        text-align: center;
-        width: 80%; /* Ajustado para melhor visualização em dispositivos móveis */
-        font-size: 5vw; /* Responsividade baseada no tamanho da viewport */
-        margin-top: 10vh; /* Espaçamento superior ajustado */
-        color: white;
-        font-weight: bold;
-    }
-    .container {
-        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
     }
+    .title {
+        font-size: 5vw; /* Ajustável com a largura da viewport */
+        color: white;
+        font-weight: bold;
+        text-align: center;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px; /* Espaçamento entre o título e a barra de status */
+    }
     .progress-bar {
-        width: 60%; /* Aumento da visibilidade em dispositivos móveis */
-        height: 20px; /* Ajuste para melhor visualização */
+        width: 60%; /* Adaptável a telas maiores */
+        height: 20px;
         background-color: #555;
         border-radius: 15px;
         overflow: hidden;
         box-shadow: 0 0 10px #fff;
-        margin-top: 2vh; /* Espaçamento ajustado */
+        margin-top: 20px;
     }
     .progress-bar-inner {
         height: 100%;
@@ -60,23 +62,26 @@
         transition: width 2s;
     }
     .loading-text {
-        font-size: 3vw; /* Tamanho de fonte responsivo */
+        font-size: 4vw; /* Ajustável com a largura da viewport */
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-top: 2vh;
+        margin-top: 20px;
     }
     .fa-cog {
-        margin-left: 5px; /* Ajuste para dispositivos móveis */
-        font-size: 4vw; /* Tamanho de ícone responsivo */
+        margin-left: 10px;
+        font-size: 3vw; /* Ajustável com a largura da viewport */
         animation: spin 4s linear infinite;
     }
-    @media (orientation: landscape) {
+    @media (min-width: 1024px) {
         .title {
-            font-size: 3vh; /* Ajuste para modo paisagem */
+            font-size: 2.5rem; /* Tamanho fixo para telas grandes */
         }
         .loading-text, .fa-cog {
-            font-size: 2vh; /* Ajustes para modo paisagem */
+            font-size: 1.5rem; /* Tamanho fixo para telas grandes */
+        }
+        .progress-bar {
+            width: 50%; /* Largura ajustada para telas grandes */
         }
     }
     @keyframes spin {
@@ -87,21 +92,23 @@
 </head>
 <body>
 
-<div class="title">1º Congresso Jurídico Internacional do Sindepol-GO</div>
+<div class="main-content">
+    <div class="title">1º Congresso Jurídico Internacional do Sindepol-GO</div>
 
-<div class="container">
-    <div class="progress-bar">
-        <div class="progress-bar-inner"></div>
-    </div>
+    <div class="container">
+        <div class="progress-bar">
+            <div class="progress-bar-inner"></div>
+        </div>
 
-    <div class="loading-text">
-        Carregando os dados
-        <i class="fas fa-cog fa-spin"></i>
+        <div class="loading-text">
+            Carregando os dados
+            <i class="fas fa-cog fa-spin"></i>
+        </div>
     </div>
 </div>
 
 <script>
-    const totalTime = 10 * 60 * 1000; // 20 minutos
+    const totalTime = 20 * 60 * 1000; // 20 minutos
     const progressBarInner = document.querySelector('.progress-bar-inner');
 
     let start = Date.now();
